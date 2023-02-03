@@ -1,30 +1,29 @@
-def decode_char(mshChar)
-  morsAlph = { a: '.-', b: '-...', c: '-.-.', d: '-..', e: '.', f: '..-.',
-          g: '--.', h: '....', i: '..', j: '.---', k: '-.-', l: '.-..',
-          m: '--', n: '-.', o: '---', p: '.--.', q: '--.-', r: '.-.',
-          s: '...', t: '-', u: '..-', v: '...-', w: '.--', x: '-..-',
-          y: '-.--', z: '--..'
-        }
-  return  morsAlph.key(mshChar).upcase
+def decode_char(msh_char)
+  mors_alph = { a: '.-', b: '-...', c: '-.-.', d: '-..', e: '.', f: '..-.',
+                g: '--.', h: '....', i: '..', j: '.---', k: '-.-', l: '.-..',
+                m: '--', n: '-.', o: '---', p: '.--.', q: '--.-', r: '.-.',
+                s: '...', t: '-', u: '..-', v: '...-', w: '.--', x: '-..-',
+                y: '-.--', z: '--..' }
+  mors_alph.key(msh_char).upcase
 end
 
-def decode_word(mshWord)
-  wordChars = mshWord.split()
-  decodedWord =[]
-  wordChars.each do |msgChar| 
-    decodedWord.append(decode_char(msgChar))
+def decode_word(msh_word)
+  word_chars = msh_word.split
+  decoded_word = []
+  word_chars.each do |msg_char|
+    decoded_word.append(decode_char(msg_char))
   end
-  return decodedWord.join()
+  decoded_word.join
 end
 
 def decode(msg)
-  msgWords = msg.split('   ')
-  decodedMsg = []
-  msgWords.each do |word|
-    decodedMsg.append(decode_word(word))
+  msg_words = msg.split('   ')
+  decoded_msg = []
+  msg_words.each do |word|
+    decoded_msg.append(decode_word(word))
   end
-  puts decodedMsg.join(' ')
+  puts decoded_msg.join(' ')
 end
 
-decode("-- -.--   -. .- -- .")
-decode(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+decode('-- -.--   -. .- -- .')
+decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
