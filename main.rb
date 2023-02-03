@@ -5,12 +5,17 @@ def decode_char(mshChar)
           s: '...', t: '-', u: '..-', v: '...-', w: '.--', x: '-..-',
           y: '-.--', z: '--..'
         }
-  puts morsAlph.key(mshChar)
-
+  puts morsAlph.key(mshChar).upcase
+  return  morsAlph.key(mshChar).upcase
 end
 
-decode_char('-.-')
-decode_char('---')
-decode_char('.-')
-decode_char('--')
-decode_char('..')
+def decode_word(mshWord)
+  wordChars = mshWord.split()
+  decodedWord =[]
+  wordChars.each do |msgChar| 
+    decodedWord.append(decode_char(msgChar))
+  end
+  puts decodedWord.join()
+end
+
+decode_word("-- -.--")
